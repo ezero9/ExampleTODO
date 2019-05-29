@@ -15,17 +15,12 @@ protocol AllPostNavigatorInterface: BaseNavigatorInterface {
     func toDetailPost()
 }
 
-class AllPostNavigator: BaseNavigator {
-    override func pushViewController() {
-        let vc = initializeViewController(storyboardName: "AllPost", identifier: "AllPostViewController") as AllPostViewController
-        vc.allPostViewModel.navigator = self
-        pushViewControllerFromTopViewController(vc)
-    }
+class AllPostNavigator: BaseNavigator<AllPostViewController, AllPostViewModel> {
 }
 
 extension AllPostNavigator: AllPostNavigatorInterface {
     func toAddPost() {
-        AddPostNavigator(topViewColtroller: topViewController).pushViewController()
+        AddPostNavigator().presentViewController(from: topViewController)
     }
 
     func toEditPost() {

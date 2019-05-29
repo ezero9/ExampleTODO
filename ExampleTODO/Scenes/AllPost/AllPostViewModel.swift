@@ -10,19 +10,28 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class AllPostViewModel: ViewModel {
-    var navigator: AllPostNavigatorInterface?
+class AllPostViewModel: BaseViewModel {
+    var viewController: AllPostViewInterface!
+    private var navigator: AllPostNavigatorInterface!
     private let allPostModel: AllPostModelInterface //= ApplicationContext.getObject(key: "allPostModel")
     
     init(allPostModel: AllPostModelInterface) {
         self.allPostModel = allPostModel
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigator = baseNavigator as? AllPostNavigatorInterface
+    }
+    
+}
+
+extension AllPostViewModel: ViewModel {
     func transform(input: AllPostViewModel.Input) -> AllPostViewModel.Output {
         let addPost = input.addPostTrigger.do(onNext: { self.navigator?.toAddPost() })
         let output = Output(allPost: allPostModel.getAllPost(),
                             addPost: addPost)
-
+        
         return output
     }
 }

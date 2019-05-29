@@ -10,21 +10,28 @@ import Foundation
 import UIKit
 
 protocol BaseNavigatorInterface {
-    func pushViewController()
+    func pushViewController(from: UIViewController)
+    func presentViewController(from: UIViewController)
     func popViewController()
     func dismiss()
     func returnToHome()
 }
 
-class BaseNavigator: BaseNavigatorInterface {
+class BaseNavigator<T: BaseViewController, T2: BaseViewModel>: BaseNavigatorInterface {
     var topViewController: UIViewController!
 
-    init(topViewColtroller: UIViewController) {
-        self.topViewController = topViewColtroller
+    func pushViewController(from: UIViewController) {
+        let vc: T = ApplicationContext.resolve()
+        vc.baseViewModel.baseNavigator = self
+        from.navigationController?.pushViewController(vc, animated: false)
+        topViewController = vc
     }
-
-    func pushViewController() {
-        fatalError("Not Implemented! \(self)")
+    
+    func presentViewController(from: UIViewController) {
+        let vc: T = ApplicationContext.resolve()
+        vc.baseViewModel.baseNavigator = self
+        from.present(vc, animated: true)
+        topViewController = vc
     }
     
     func popViewController() {
@@ -32,27 +39,17 @@ class BaseNavigator: BaseNavigatorInterface {
             self.topViewController.navigationController?.popViewController(animated: true)
         }
     }
-    
+
     func dismiss() {
         mainThread {
             self.topViewController.dismiss(animated: true)
         }
     }
-    
+
     func returnToHome() {
 
     }
-    
-    func pushViewControllerFromTopViewController(_ vc: UIViewController) {
-        topViewController.navigationController?.pushViewController(vc, animated: false)
-        topViewController = vc
-    }
-    
-    func presentViewControllerFromTopViewController(_ vc: UIViewController) {
-        topViewController.navigationController?.present(vc, animated: true)
-        topViewController = vc
-    }
-    
+
     func initializeViewController<T>(storyboardName: String, identifier: String) -> T {
         guard let vc = UIStoryboard(name: storyboardName, bundle: nil).instantiateViewController(withIdentifier: identifier) as? T else{
             fatalError("initialize failed: \(storyboardName) \(identifier)")

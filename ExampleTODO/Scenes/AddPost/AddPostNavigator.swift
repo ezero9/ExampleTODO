@@ -12,12 +12,7 @@ import UIKit
 protocol AddPostNavigatorInterface: BaseNavigatorInterface {
 }
 
-class AddPostNavigator: BaseNavigator {
-    override func pushViewController() {
-        let vc = initializeViewController(storyboardName: "AddPost", identifier: "AddPostViewController") as AddPostViewController
-        vc.addPostViewModel.navigator = self
-        presentViewControllerFromTopViewController(vc)
-    }
+class AddPostNavigator: BaseNavigator<AddPostViewController, AddPostViewModel> {
 }
 
 extension AddPostNavigator: AddPostNavigatorInterface {

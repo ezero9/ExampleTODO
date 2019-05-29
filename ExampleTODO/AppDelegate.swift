@@ -12,7 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var allPostNavigator: AllPostNavigatorInterface?
+    var navigator: BaseNavigatorInterface?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         ApplicationContext.initialize(.prod)
@@ -20,8 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigationViewController = UINavigationController(rootViewController: UIViewController())
         navigationViewController.isNavigationBarHidden = true
         window.rootViewController = navigationViewController
-        allPostNavigator = AllPostNavigator(topViewColtroller: navigationViewController.topViewController!)
-        allPostNavigator?.pushViewController()
+        navigator = AllPostNavigator()
+        navigator?.pushViewController(from: navigationViewController.topViewController!)
         
         self.window = window
         self.window?.makeKeyAndVisible()

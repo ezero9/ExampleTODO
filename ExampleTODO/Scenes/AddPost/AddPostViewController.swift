@@ -10,19 +10,22 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class AddPostViewController: UIViewController {
+protocol AddPostViewInterface: BaseViewInterface {
+    
+}
+
+class AddPostViewController: BaseViewController {
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var contentsTextField: UITextView!
     
+    var addPostViewModel: AddPostViewModel!
     private let disposeBag = DisposeBag()
-    
-    let addPostViewModel: AddPostViewModel = ApplicationContext.resolve() //ApplicationContext.getObject(key: "addPostViewModel")
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.contentsTextField.layer.borderColor = UIColor.gray.cgColor
         self.contentsTextField.layer.borderWidth = 2.3
         self.contentsTextField.layer.cornerRadius = 15
@@ -37,4 +40,8 @@ class AddPostViewController: UIViewController {
 //        ouput.dismiss.drive(onNext: { self.dismiss(animated: true) }).disposed(by: disposeBag)
         ouput.saveBtnEnable.drive(saveButton.rx.isEnabled).disposed(by: disposeBag)
     }
+}
+
+extension AddPostViewController: AddPostViewInterface {
+    
 }

@@ -2,4 +2,86 @@
 <Bucket
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ExampleTODO/Scenes/AddPost/AddPostViewModel.swift"
+            timestampString = "580812197.4473799"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "transform(input:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ExampleTODO.AddPostViewModel.transform(input: ExampleTODO.AddPostViewModel.Input) -&gt; ExampleTODO.AddPostViewModel.Output"
+                  moduleName = "ExampleTODO"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leeyoungju/Documents/workspace-IOS/ExampleTODO/ExampleTODO/Scenes/AddPost/AddPostViewModel.swift"
+                  timestampString = "580812197.5391231"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "1748">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #5 (()) -&gt; () in ExampleTODO.AddPostViewModel.transform(input: ExampleTODO.AddPostViewModel.Input) -&gt; ExampleTODO.AddPostViewModel.Output"
+                  moduleName = "ExampleTODO"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leeyoungju/Documents/workspace-IOS/ExampleTODO/ExampleTODO/Scenes/AddPost/AddPostViewModel.swift"
+                  timestampString = "580812197.541775"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ExampleTODO/Scenes/Base/BaseNavigator.swift"
+            timestampString = "580812197.447453"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "dismiss()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ExampleTODO/Scenes/AddPost/AddPostViewModel.swift"
+            timestampString = "580812197.4478149"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

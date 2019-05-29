@@ -34,7 +34,7 @@ class AddPostViewController: UIViewController {
         
         
         
-        ouput.dismiss.drive(onNext: { self.dismiss(animated: true) }).disposed(by: disposeBag)
+//        ouput.dismiss.drive(onNext: { self.dismiss(animated: true) }).disposed(by: disposeBag)
         ouput.saveBtnEnable.drive(saveButton.rx.isEnabled).disposed(by: disposeBag)
     }
 }

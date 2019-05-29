@@ -9,26 +9,16 @@
 import Foundation
 import UIKit
 
-protocol AddPostNavigatorInterface {
-    
+protocol AddPostNavigatorInterface: BaseNavigatorInterface {
 }
 
-class AddPostNavigator: AddPostNavigatorInterface {
-    private let topViewController: UIViewController!
-    
-    init(topViewColtroller: UIViewController) {
-        self.topViewController = topViewColtroller
+class AddPostNavigator: BaseNavigator {
+    override func pushViewController() {
+        let vc = initializeViewController(storyboardName: "AddPost", identifier: "AddPostViewController") as AddPostViewController
+        vc.addPostViewModel.navigator = self
+        presentViewControllerFromTopViewController(vc)
     }
-    
-    
-    func toAddpost() {
-        let storyBoard = UIStoryboard(name: "AddPost", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "AddPostViewController") as! AddPostViewController
-        //        vc.allPostViewModel.navigator = self
-        topViewController.navigationController?.pushViewController(vc, animated: false)
-    }
-    
-    func toEditPost() {
-        
-    }
+}
+
+extension AddPostNavigator: AddPostNavigatorInterface {
 }

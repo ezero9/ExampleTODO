@@ -9,34 +9,30 @@
 import Foundation
 import UIKit
 
-protocol AllPostNavigatorInterface {
-    func toAllPost()
+protocol AllPostNavigatorInterface: BaseNavigatorInterface {
     func toAddPost()
     func toEditPost()
+    func toDetailPost()
 }
 
-class AllPostNavigator: AllPostNavigatorInterface {
-    private let topViewController: UIViewController!
-
-    init(topViewColtroller: UIViewController) {
-        self.topViewController = topViewColtroller
-    }
-
-    func toAllPost() {
-        let storyBoard = UIStoryboard(name: "AllPost", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "AllPostViewController") as! AllPostViewController
+class AllPostNavigator: BaseNavigator {
+    override func pushViewController() {
+        let vc = initializeViewController(storyboardName: "AllPost", identifier: "AllPostViewController") as AllPostViewController
         vc.allPostViewModel.navigator = self
-        topViewController.navigationController?.pushViewController(vc, animated: false)
+        pushViewControllerFromTopViewController(vc)
+    }
+}
+
+extension AllPostNavigator: AllPostNavigatorInterface {
+    func toAddPost() {
+        AddPostNavigator(topViewColtroller: topViewController).pushViewController()
     }
 
-    func toAddPost() {
-        let storyBoard = UIStoryboard(name: "AddPost", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "AddPostViewController") as! AddPostViewController
-        vc.addPostViewModel.navigator = AddPostNavigator(topViewColtroller: topViewController)
-        topViewController.present(vc, animated: true, completion: nil)
-    }
-    
     func toEditPost() {
-        
+        //EditPostNavigator(topViewController: topViewController).toEditPost()
+    }
+
+    func toDetailPost() {
+        //DetailPostNavigator(topViewController: topViewController).toDetailPost()
     }
 }

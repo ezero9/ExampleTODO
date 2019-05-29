@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationViewController.isNavigationBarHidden = true
         window.rootViewController = navigationViewController
         allPostNavigator = AllPostNavigator(topViewColtroller: navigationViewController.topViewController!)
-        allPostNavigator?.toAllPost()
+        allPostNavigator?.pushViewController()
         
         self.window = window
         self.window?.makeKeyAndVisible()

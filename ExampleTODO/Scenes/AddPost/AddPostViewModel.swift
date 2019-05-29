@@ -13,6 +13,7 @@ import RxCocoa
 class AddPostViewModel: ViewModel {
     private let addPostModel: AddPostModelInterface //= ApplicationContext.getObject(key: "addPostModel")
     var navigator: AddPostNavigatorInterface?
+    private let disposeBag = DisposeBag()
     
     init(addPostModel: AddPostModelInterface) {
         self.addPostModel = addPostModel
@@ -28,11 +29,13 @@ class AddPostViewModel: ViewModel {
                 return Driver.just(())
             }
         
-        let dismiss = Driver
+        Driver
             .of(input.cancelBtn, save)
             .merge()
+            .drive(onNext: { [weak self] _ in self?.navigator?.dismiss() })
+            .disposed(by: disposeBag)
         
-        return Output(dismiss: dismiss, saveBtnEnable: enableSave)
+        return Output(saveBtnEnable: enableSave)
     }
 }
 
@@ -44,7 +47,6 @@ extension AddPostViewModel {
         let cancelBtn: Driver<Void>
     }
     struct Output {
-        let dismiss: Driver<Void>
         let saveBtnEnable: Driver<Bool>
     }
 }

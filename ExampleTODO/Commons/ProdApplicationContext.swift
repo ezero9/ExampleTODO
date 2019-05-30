@@ -12,7 +12,8 @@ import UIKit
 class ProdApplicationContext: CommonApplicationContext {
     override func configure() {
         //Singletone
-        registerSingleton({ return CoreDataStore()})
+        registerSingleton({ return CoreDataStore() })
+        registerSingleton({ return EventService() })
         
         //allPost
         register({ return CoreDataDAO(dataStore: self.resolve()) as AllPostDAOInterface })

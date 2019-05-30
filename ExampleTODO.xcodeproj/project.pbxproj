@@ -47,6 +47,7 @@
 		A79CE078229D1F1400C6B9C2 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79CE077229D1F1400C6B9C2 /* BaseViewModel.swift */; };
 		A79CE07A229D2BDE00C6B9C2 /* BaseNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79CE079229D2BDE00C6B9C2 /* BaseNavigator.swift */; };
 		A79CE07C229D302F00C6B9C2 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79CE07B229D302F00C6B9C2 /* DispatchQueue.swift */; };
+		A79CE07E229FC24700C6B9C2 /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79CE07D229FC24700C6B9C2 /* EventService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +125,7 @@
 		A79CE077229D1F1400C6B9C2 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		A79CE079229D2BDE00C6B9C2 /* BaseNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigator.swift; sourceTree = "<group>"; };
 		A79CE07B229D302F00C6B9C2 /* DispatchQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueue.swift; sourceTree = "<group>"; };
+		A79CE07D229FC24700C6B9C2 /* EventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +223,7 @@
 				A4530F6C2209777A00D01C36 /* ProdApplicationContext.swift */,
 				A4530F6A2209777A00D01C36 /* TestApplicationContext.swift */,
 				A4530F6B2209777A00D01C36 /* ViewModel.swift */,
+				A79CE07D229FC24700C6B9C2 /* EventService.swift */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				A79CE076229D1EFF00C6B9C2 /* BaseViewController.swift in Sources */,
 				A79CE07A229D2BDE00C6B9C2 /* BaseNavigator.swift in Sources */,
 				A4530F5E2209769300D01C36 /* Post.swift in Sources */,
+				A79CE07E229FC24700C6B9C2 /* EventService.swift in Sources */,
 				A79CE078229D1F1400C6B9C2 /* BaseViewModel.swift in Sources */,
 				2C46A61C21EF15D700B53C12 /* ApplicationContext.swift in Sources */,
 				A74D83ED2293CE650006818E /* WeakRef.swift in Sources */,

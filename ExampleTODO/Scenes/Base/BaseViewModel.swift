@@ -21,13 +21,14 @@ protocol BaseViewModelInterface {
 class BaseViewModel {
     var baseNavigator: BaseNavigatorInterface!
     var baseViewController: BaseViewInterface!
-    
+    let eventService = ApplicationContext.resolve() as EventService
+
     func viewDidLoad() {
-        
+        eventService.addEventListener(self)
     }
     
     func viewWillAppear(_ animated: Bool) {
-        
+
     }
     
     func viewDidAppear(_ animated: Bool) {
@@ -39,6 +40,17 @@ class BaseViewModel {
     }
     
     func viewDidDisappear(_ animated: Bool) {
-        
+
+    }
+}
+
+extension BaseViewModel: EventServiceListener {
+    func onEvent(event: EventService.EventType) {
+        switch event {
+        case .netwrokConnect:
+            baseViewController.showToast(message: "networkConnect!")
+        case .netwrokDisConnect:
+            baseViewController.showToast(message: "networkDisConnect!")
+        }
     }
 }

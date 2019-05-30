@@ -36,6 +36,8 @@ class AllPostViewModel: BaseViewModel {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        (ApplicationContext.resolve() as EventService).notifyEvent(event: .netwrokConnect)
     }
     
 }

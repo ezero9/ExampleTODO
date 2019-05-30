@@ -9,6 +9,8 @@
 import Foundation
 
 protocol BaseViewModelInterface {
+    var baseNavigator: BaseNavigatorInterface! { get set }
+    var baseViewController: BaseViewInterface! { get set }
     func viewDidLoad()
     func viewWillAppear(_ animated: Bool)
     func viewDidAppear(_ animated: Bool)

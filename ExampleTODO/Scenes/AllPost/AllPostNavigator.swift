@@ -15,7 +15,7 @@ protocol AllPostNavigatorInterface: BaseNavigatorInterface {
     func toDetailPost()
 }
 
-class AllPostNavigator: BaseNavigator<AllPostViewController, AllPostViewModel> {
+class AllPostNavigator: BaseNavigator<AllPostViewController> {
 }
 
 extension AllPostNavigator: AllPostNavigatorInterface {

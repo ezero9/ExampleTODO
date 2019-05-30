@@ -20,7 +20,13 @@ class AddPostViewController: BaseViewController {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var contentsTextField: UITextView!
     
-    var addPostViewModel: AddPostViewModel!
+    override var baseViewModel: BaseViewModelInterface! {
+        didSet {
+            addPostViewModel = baseViewModel as? AddPostViewModel
+        }
+    }
+    
+    private var addPostViewModel: AddPostViewModel!
     private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -35,9 +41,6 @@ class AddPostViewController: BaseViewController {
                                                                       saveBtn: saveButton.rx.tap.asDriver(),
                                                                       cancelBtn: cancelButton.rx.tap.asDriver()))
         
-        
-        
-//        ouput.dismiss.drive(onNext: { self.dismiss(animated: true) }).disposed(by: disposeBag)
         ouput.saveBtnEnable.drive(saveButton.rx.isEnabled).disposed(by: disposeBag)
     }
 }

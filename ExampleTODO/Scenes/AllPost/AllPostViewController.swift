@@ -18,7 +18,13 @@ class AllPostViewController: BaseViewController {
     @IBOutlet weak var addPostButton: UIBarButtonItem!
     @IBOutlet weak var postTableView: UITableView!
     
-    var allPostViewModel: AllPostViewModel!
+    override var baseViewModel: BaseViewModelInterface! {
+        didSet {
+            allPostViewModel = baseViewModel as? AllPostViewModel
+        }
+    }
+
+    private var allPostViewModel: AllPostViewModel!
     private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -30,7 +36,11 @@ class AllPostViewController: BaseViewController {
             (index, data, cell) in
             cell.textLabel?.text = data.title
         }.disposed(by: disposeBag)
-        
+
+        postTableView.rx.modelSelected(Post.self).subscribe(onNext:  { item in
+            print("\(item)")
+        }).disposed(by: disposeBag)
+
         output.addPost.drive().disposed(by: disposeBag)
     }
     

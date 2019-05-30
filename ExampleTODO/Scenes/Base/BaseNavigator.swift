@@ -17,7 +17,7 @@ protocol BaseNavigatorInterface {
     func returnToHome()
 }
 
-class BaseNavigator<T: BaseViewController, T2: BaseViewModel>: BaseNavigatorInterface {
+class BaseNavigator<T: BaseViewController>: BaseNavigatorInterface {
     var topViewController: UIViewController!
 
     func pushViewController(from: UIViewController) {

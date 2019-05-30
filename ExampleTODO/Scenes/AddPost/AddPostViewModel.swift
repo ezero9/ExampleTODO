@@ -10,11 +10,26 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+protocol AddPostViewModelInterface: BaseViewModelInterface {
+    
+}
+
 class AddPostViewModel: BaseViewModel {
-    var viewController: AddPostViewInterface!
+    private var viewController: AddPostViewInterface!
     private let addPostModel: AddPostModelInterface //= ApplicationContext.getObject(key: "addPostModel")
     private var navigator: AddPostNavigatorInterface?
     private let disposeBag = DisposeBag()
+    
+    override var baseNavigator: BaseNavigatorInterface! {
+        didSet {
+            navigator = baseNavigator as? AddPostNavigatorInterface
+        }
+    }
+    override var baseViewController: BaseViewInterface! {
+        didSet {
+            viewController = baseViewController as? AddPostViewInterface
+        }
+    }
     
     init(addPostModel: AddPostModelInterface) {
         self.addPostModel = addPostModel
@@ -22,8 +37,11 @@ class AddPostViewModel: BaseViewModel {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigator = baseNavigator as? AddPostNavigatorInterface
     }
+}
+
+extension AddPostViewModel: AddPostViewModelInterface {
+    
 }
 
 extension AddPostViewModel: ViewModel {
@@ -45,18 +63,16 @@ extension AddPostViewModel: ViewModel {
         
         return Output(saveBtnEnable: enableSave)
     }
-}
 
-extension AddPostViewModel {
     struct Input {
         let title: Driver<String>
         let contents: Driver<String>
         let saveBtn: Driver<Void>
         let cancelBtn: Driver<Void>
     }
+
     struct Output {
         let saveBtnEnable: Driver<Bool>
     }
 }
-
 

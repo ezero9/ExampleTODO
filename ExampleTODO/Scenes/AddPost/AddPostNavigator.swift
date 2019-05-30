@@ -12,7 +12,7 @@ import UIKit
 protocol AddPostNavigatorInterface: BaseNavigatorInterface {
 }
 
-class AddPostNavigator: BaseNavigator<AddPostViewController, AddPostViewModel> {
+class AddPostNavigator: BaseNavigator<AddPostViewController> {
 }
 
 extension AddPostNavigator: AddPostNavigatorInterface {

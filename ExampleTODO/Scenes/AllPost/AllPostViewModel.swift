@@ -10,10 +10,25 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+protocol AllPostViewModelInterface: BaseViewModelInterface {
+    
+}
+
 class AllPostViewModel: BaseViewModel {
-    var viewController: AllPostViewInterface!
+    private var viewController: AllPostViewInterface!
     private var navigator: AllPostNavigatorInterface!
     private let allPostModel: AllPostModelInterface //= ApplicationContext.getObject(key: "allPostModel")
+    
+    override var baseNavigator: BaseNavigatorInterface! {
+        didSet {
+            navigator = baseNavigator as? AllPostNavigatorInterface
+        }
+    }
+    override var baseViewController: BaseViewInterface! {
+        didSet {
+            viewController = baseViewController as? AllPostViewInterface
+        }
+    }
     
     init(allPostModel: AllPostModelInterface) {
         self.allPostModel = allPostModel
@@ -21,8 +36,11 @@ class AllPostViewModel: BaseViewModel {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigator = baseNavigator as? AllPostNavigatorInterface
     }
+    
+}
+
+extension AllPostViewModel: AllPostViewModelInterface {
     
 }
 
@@ -34,16 +52,14 @@ extension AllPostViewModel: ViewModel {
         
         return output
     }
-}
-
-extension AllPostViewModel {
+    
     struct Input {
         let addPostTrigger: Driver<Void>
     }
+
     struct Output{
         let allPost: Variable<[Post]>
         let addPost: Driver<Void>
     }
 }
-
 

@@ -10,12 +10,13 @@ import Foundation
 import UIKit
 
 protocol BaseViewInterface {
+    var baseViewModel: BaseViewModelInterface! { get set }
     func showPopup()
     func hidePopup()
 }
 
 class BaseViewController: UIViewController {
-    var baseViewModel: BaseViewModel!
+    var baseViewModel: BaseViewModelInterface!
     
     override func viewDidLoad() {
         super.viewDidLoad()
